@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>activity2/title></title>
+    <link class="localLinks" href="src/scss/index.scss" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  
+  <script class="localJSAssets" src="gulpfile.js"></script>
+   <script>
+     /** Set Project ROOT Directory here **/
+      var directoryName = 'activity2sample/'.toLowerCase();
+      var baseUrl = window.location.href.slice(0, window.location.href.indexOf(directoryName)) + directoryName; 
+      
+      /**
+      * This script is just a temporary fix for the issue of ChromeBox using VM
+      * The code below sets the base path of the resources of the page
+      * Add a class localJSAssets to your <script> and localCSSAssets to your <link>
+      **/
+      window.onload = function() {
+        var links = document.getElementsByClassName('localLinks'); 
+        var scripts = document.getElementsByClassName('localJSAssets');
+        console.log(scripts)
+        var images = document.getElementsByTagName('img');
+        var allScripts = [];
+        
+        for (var i = 0; i < images.length; i++) {
+          images[i].src = `${baseUrl}${images[i].getAttribute('src')}`;
+        }
+        
+        for (var i = 0; i < links.length; i++) {
+          links[i].href = baseUrl + links[i].getAttribute('href');
+        }
+        
+        for (var i = 0; i < scripts.length; i++) {
+          allScripts.push(scripts[i]);
+        }
+        
+        for (var i = 0; i < allScripts.length; i++) {
+       
+          var script = document.createElement('script'); 
+          script.src = baseUrl + allScripts[i].getAttribute('src');
+          // script.classList.add('localJSAssets')
+          document.getElementsByTagName('body')[0].appendChild(script);
+          var paras = document.getElementsByClassName('localJSAssets');
+          while(paras[0]) {
+              paras[0].parentNode.removeChild(paras[0]);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
+
+

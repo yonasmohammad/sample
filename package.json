@@ -1,7 +1,6 @@
 {
   "name": "activity2sample",
   "version": "0.0.0",
-  "description": "",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +14,13 @@
   "bugs": {
     "url": "https://github.com/yonasmohammad/sample/issues"
   },
-  "homepage": "https://github.com/yonasmohammad/sample"
+  "homepage": "https://github.com/yonasmohammad/sample",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "node-sass": "^3.13.0"
+  },
+  "devDependencies": {
+    "gulp-sass": "^2.3.2"
+  }
 }
